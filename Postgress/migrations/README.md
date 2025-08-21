@@ -67,9 +67,9 @@ gorm-migrate → встроенный в ORM gorm (менее универсал
 
 /migrations
 
-├── [0001_init.up.sql](.0001_init.up.sql)     # Создание таблицы orders
+├── [0001_init.up.sql](./migrations/0001_init.up.sql)     # Создание таблицы orders
 
-├── [0001_init.down.sql](.0001_init.down.sql)   # Удаление таблицы orders
+├── [0001_init.down.sql](./migrations/0001_init.down.sql)   # Удаление таблицы orders
 
 /[docker-compose.yml](./docker-compose.yml)         # Поднятие postgres + миграций
 
