@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1879
+      POSTGRES_DB: wildberries
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  migrate:
+    image: migrate/migrate
+    volumes:
+      - ./migrations:/migrations
+    command:
+      [
+        "-path", "/migrations",                 # папка с миграциями
+        "-database", "postgres://postgres:1879@postgres:5432/wildberries?sslmode=disable",  # строка подключения
+        "up"                                    # применяем все up.sql
+      ]
+    depends_on:
+      - postgres                                # миграции стартуют после postgres
+
+volumes:
+  pgdata:

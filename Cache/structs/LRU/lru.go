@@ -1,4 +1,4 @@
-package Least_Recently_Used
+package LRU
 
 import (
 	"sync"
